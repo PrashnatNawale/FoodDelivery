@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="myform">
+
+        <label for="">Zone:</label>
+        <select name="zone" id="zone" required>
+                <option value="Central">Central</option>
+                <option value="East">East</option>
+                <option value="West">West</option>
+                <option value="South">South</option>
+                <option value="North">North</option>
+            </select>
+        <br><br>
+        <label for="">Organization ID:</label>
+        <input type="text" name="organization_id" id="organization_id" required>
+        <br><br>
+        <label for="">Total Distance:</label>
+        <input type="number" name="total_distance" id="total_distance">
+        <br><br>
+        <label for="">Item Type:</label>
+        <select name="item_type" id="item_type">
+                <option value="perishable">Perishable</option>
+                <option value="non-perishable">Non-perishable</option>
+            </select>
+        <br><br>
+        <button type="button" onclick="submitForm()">Submit</button>
+    </form>
+    <div id="output">
+
+    </div>
+</body>
+<script>
+    function submitForm() {
+        const formele = document.getElementById('myform');
+        console.log("form", formele);
+        const formData = new FormData(document.getElementById('myform'));
+        console.log("Hello", formData.entries());
+        console.log(formData);
+        console.log([...formData.keys()])
+        fetch('/submit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(Object.fromEntries(formData)),
+            })
+            .then(response => response.json())
+            .then(data => showdata(data))
+            .catch(error => console.log(error));
+        return false;
+
+    }
+
+    function showdata(data) {
+        console.log(data['price']);
+        var ele = document.getElementById("output");
+        while (ele.firstChild) {
+            ele.removeChild(ele.firstChild);
+        }
+        var newhead = document.createElement("h1");
+        newhead.setAttribute('id', 'child');
+        var text = document.createTextNode(data['price']);
+        newhead.append(text);
+        ele.append(newhead);
+
+        // document.body.appendChild(newhead);
+    }
+</script>
+
+</html>
