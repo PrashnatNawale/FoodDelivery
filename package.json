@@ -5,7 +5,11 @@
     "main": "app.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
+<<<<<<< HEAD
         "build": "webpack"
+=======
+        "build":"webpack"
+>>>>>>> de03afbdc326aa1502183368ca44975240608b1e
     },
     "author": "",
     "license": "ISC",
@@ -19,6 +23,12 @@
         "path": "^0.12.7"
     },
     "devDependencies": {
+<<<<<<< HEAD
         "webpack-cli": "^5.1.4"
     }
+=======
+  "webpack-cli": "^4.0.0"
+}
+
+>>>>>>> de03afbdc326aa1502183368ca44975240608b1e
 }
