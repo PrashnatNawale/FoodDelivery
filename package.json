@@ -17,5 +17,8 @@
         "http": "^0.0.1-security",
         "mysql": "^2.18.1",
         "path": "^0.12.7"
+    },
+    "devDependencies": {
+        "webpack-cli": "^5.1.4"
     }
 }
